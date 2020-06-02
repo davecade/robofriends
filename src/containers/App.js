@@ -33,7 +33,12 @@ class App extends Component {
         })
 
         return !robots.length ?
-        <h1 className='tc f1 yellow'> Loading </h1> :
+        (
+            <Fragment>
+                <h1 className='f1'> Loading </h1>
+                <div className="center loader"></div>
+            </Fragment>
+        ) :
         (
             <Fragment>
                 <div className='tc'>
