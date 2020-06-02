@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
+import ErrorBoundary from '../components/ErrorBoundary';
 import './App.css'
 import 'tachyons';
 
@@ -32,14 +33,17 @@ class App extends Component {
         })
 
         return !robots.length ?
-        <h1> Loading </h1> :
+        <h1 className='tc f1 yellow'> Loading </h1> :
         (
             <Fragment>
                 <div className='tc'>
                     <h1 className="f1">Robo-Friends</h1>
                     <SearchBox searchChange={this.onSearchChange}/>
                     <Scroll>
-                        <CardList robots={filteredRobots} />
+                        <ErrorBoundary>
+                            <CardList robots={filteredRobots} />
+                        </ErrorBoundary>
+                            
                     </Scroll>
                         
                 </div>
